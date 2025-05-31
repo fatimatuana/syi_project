@@ -1,30 +1,38 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <!-- eslint-disable -->
+   <v-container fluid>
+    <router-view />
+   </v-container>
+
 </template>
+<script>
+/* eslint-disable */
+
+</script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+*{
+  font-family: 'Outfit', Avenir, Helvetica, Arial, sans-serif;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #fafafa;
 }
 
-nav {
-  padding: 30px;
+body{
+  background-color: #0e0e0e;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+p.--big, .--big{
+  font-weight: 800;
+  font-size: 5em;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+p{
+  font-size: 1em;
 }
+
 </style>
