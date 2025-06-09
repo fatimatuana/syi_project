@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const quotesRoute = require('./routes/quotes');
+const weatherRoute = require('./routes/weather');
+const generalRoute = require('./routes/general');
 
 const app = express();
 const PORT = 3000;
@@ -11,6 +13,8 @@ app.use(express.json());
 
 // Routes
 app.use('/quotes', quotesRoute);
+app.use('/weather', weatherRoute);
+app.use('/general', generalRoute);
 
 // Start server
 app.listen(PORT, () => {
