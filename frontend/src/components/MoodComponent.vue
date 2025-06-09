@@ -12,11 +12,23 @@
         {{ mood.icon }}
       </span>
     </div>
+    <button
+      class="mt-5 btn-primary"
+      :disabled="!selectedMood"
+      color="primary"
+      @click="sendMoodToAPI(selectedMood)"
+    >
+      save my mood
+    </button>
+    <!-- <p v-if="selectedMood" class="mt-2">
+      You selected: {{ selectedMood.replace(/_/g, ' ') }}
+    </p> -->
   </v-container>
 </template>
 
 <script>
 /* eslint-disable */
+import axios from "axios";
 export default {
   name: "MoodSelector",
   data() {
@@ -34,11 +46,12 @@ export default {
   methods: {
     selectMood(moodName) {
       this.selectedMood = moodName;
-      this.sendMoodToAPI(moodName);
+      // this.sendMoodToAPI(moodName);
     },
     async sendMoodToAPI(mood) {
-        await axios.post("...", {
-            mood: mood
+      console.log("Sending mood to API:", mood);
+        await axios.post("...not created rn", {
+            mood: this.selectedMood
         })
         .then(function (response) {
             console.log(response);
