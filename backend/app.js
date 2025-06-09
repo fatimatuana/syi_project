@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const messagesRoute = require('./routes/messages');
+const quotesRoute = require('./routes/quotes');
 
 const app = express();
 const PORT = 3000;
@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/messages', messagesRoute);
+app.use('/quotes', quotesRoute);
 
 // Start server
 app.listen(PORT, () => {
