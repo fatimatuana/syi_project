@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 async function getWeatherByLocation(lat, lon) {
-    const apiKey = 'c871dda0adf242933090632e32874c2d'; // my API key
+    const apiKey = 'API_KEY'; // my API key
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
     try {
         const res = await axios.get(url);
@@ -14,7 +14,7 @@ async function getWeatherByLocation(lat, lon) {
 }
 
 async function getWeatherByCity(city) {
-    const apiKey = 'c871dda0adf242933090632e32874c2d';
+    const apiKey = 'API_KEY';
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     try {
         const res = await axios.get(url);
