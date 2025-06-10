@@ -33,14 +33,15 @@ export default {
       }
 
       try {
-        const response = await axios.post("....", {
+        const response = await axios.post("http://localhost:3000/auth/login", {
           email: this.email,
           password: this.password
         });
 
         if (response.data.success) {
-          this.$router.push({ path: '/main' });
+          this.$router.push({ path: '/' });
           localStorage.setItem('loggedin', true); // hardcoded for now
+          localStorage.setItem('userEmail', this.email); // store email for future use
         } else {
           this.errorMessage = response.data.message || "Login failed. Please try again.";
         }
