@@ -1,12 +1,14 @@
 <template>
-  <!-- eslint-disable -->
-  <div class="main-screen d-flex flex-column align-center justify-center">
-    <v-row class="d-flex justify-center">
-      <v-col cols="12" sm="8" md="6">
-        <h1 class="text-center">Get your daily dose of <span class="font--logo">My Daily Companion</span> !</h1>
-        <p class="text-center">Your personal assistant for daily motivation and mood tracking.</p>
-      </v-col>
-    </v-row>
+  <v-container>
+    <Navbar />
+    <!-- eslint-disable -->
+    <div class="main-screen d-flex flex-column align-center justify-center">
+      <v-row class="d-flex justify-center">
+        <v-col cols="12" sm="8" md="6">
+          <h1 class="text-center">Get your daily dose of <span class="font--logo">My Daily Companion</span> !</h1>
+          <p class="text-center">Your personal assistant for daily motivation and mood tracking.</p>
+        </v-col>
+      </v-row>
 
     <button @click="getLocation" v-show="!showInput" class="btn-primary mt-5">Get Started!</button>
 
@@ -17,11 +19,14 @@
       <a v-show="showInput" @click="showInput = false" class="--detail mt-3">or <span>use current location</span></a>
     </div>
 
-  </div>
+  </div>  
+</v-container>
+
 </template>
 
 <script>
 /* eslint-disable */
+import Navbar from "@/components/Navbar.vue";
 import axios from "axios";
 export default {
   name: "HomeView",
@@ -31,14 +36,15 @@ export default {
       showInput: false,
     };
   },
+  components: {
+    Navbar,
+  },
   methods: {
     getLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const { latitude, longitude } = position.coords;
-            console.log("Latitude:", latitude);
-            console.log("Longitude:", longitude);
             this.getWeather(latitude, longitude);
           },
           (error) => {
@@ -62,12 +68,10 @@ export default {
           return;
         }
         let data = res.data;
-        console.log("Weather data received:", data);
         this.$router.push({
           path: '/main',
           query: { weather: JSON.stringify(data) }
         });
-
       } catch (error) {
         console.error("Error fetching weather data:", error);
       }
@@ -88,7 +92,6 @@ export default {
           return;
         }
         let data = res.data;
-        console.log("Weather data received:", data);
         this.$router.push({
           path: '/main',
           query: { weather: JSON.stringify(data) }
@@ -103,7 +106,7 @@ export default {
 <style scoped>
 .main-screen {
     padding: 20px;
-    height: 90vh;
+    height: 85vh;
     display: flex;
     align-content: space-around;
     align-items: center;
