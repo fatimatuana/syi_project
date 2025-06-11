@@ -4,6 +4,7 @@
     <div class="main">
       <WeatherInfo :weatherData="weatherData" />
       <QuoteComp />
+      <SuggestionComponent :weather_condition="weatherData.main" />
       <MoodComponent @moodSelected="handleMoodSelected" />
     </div>
   </v-container>
@@ -14,6 +15,7 @@
 import WeatherInfo from '@/components/WeatherInfoComponent.vue';
 import MoodComponent from '@/components/MoodComponent.vue';
 import QuoteComp from '@/components/QuoteComp.vue';
+import SuggestionComponent from '@/components/SuggestionComponent.vue';
 
 import Navbar from '@/components/Navbar.vue';
 import axios from 'axios';
@@ -24,6 +26,7 @@ export default {
     WeatherInfo,
     MoodComponent,
     QuoteComp,
+    SuggestionComponent,
     Navbar
   },
   data() {
