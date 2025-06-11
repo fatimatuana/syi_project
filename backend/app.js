@@ -4,6 +4,7 @@ const quotesRoute = require('./routes/quotes');
 const weatherRoute = require('./routes/weather');
 const authRoutes = require('./routes/auth');
 const entriesRoutes = require('./routes/entries');
+const suggestionsRoute = require('./routes/suggestions');
 
 const app = express();
 const PORT = 3000;
@@ -17,6 +18,7 @@ app.use('/quotes', quotesRoute);
 app.use('/weather', weatherRoute);
 app.use('/auth', authRoutes);
 app.use('/entries', entriesRoutes);
+app.use('/suggestions', suggestionsRoute);
 
 // Start server
 app.listen(PORT, () => {
