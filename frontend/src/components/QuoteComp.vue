@@ -21,23 +21,20 @@ export default {
   },
   methods: {
     async getQuote() {
-    //   let res = await axios.get("http://localhost:3000/quotes/today");
-    //   if(res.status !== 200) {
-    //     console.error("Failed to fetch quote:", res.statusText);
-    //     this.quoteobj = {
-    //       quote: "No quote available",
-    //       author: "Unknown"
-    //     };
-    //     return;
-    //   }
-    //   let data = res.data;
-    //   console.log("Quote data received:", data);
-    //   this.quoteobj = {
-    //     quote: data[0].quote,
-    //     author: data[0].author
-    //   };
-      this.quoteobj.quote ="One is never afraid of the unknown; one is afraid of the known coming to an end.";
-        this.quoteobj.author = "Jiddu Krishnamurti";
+      let res = await axios.get("http://localhost:3000/quotes/today");
+      if(res.status !== 200) {
+        console.error("Failed to fetch quote:", res.statusText);
+        this.quoteobj = {
+          quote: "One is never afraid of the unknown; one is afraid of the known coming to an end.",
+          author: "Jiddu Krishnamurti"
+        };
+        return;
+      }
+      let data = res.data;
+      this.quoteobj = {
+        quote: data[0].quote,
+        author: data[0].author
+      };
     }
   },
   created() {
