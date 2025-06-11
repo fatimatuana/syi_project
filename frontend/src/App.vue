@@ -42,12 +42,16 @@ body{
   margin: 0;
 
 }
-p.--big, .--big{
-  font-weight: 800;
-  font-size: 5em;
-}
 p{
   font-size: 1em;
+}
+.--medium{
+  font-weight: 800;
+  font-size: 2em;
+}
+.--big{
+  font-weight: 800;
+  font-size: 5em;
 }
 button{
   border-radius: 10px;
