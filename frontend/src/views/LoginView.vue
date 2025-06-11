@@ -7,6 +7,7 @@
       <input type="password" v-model="password" placeholder="Password" />
       <button class="btn-secondary" @click="handleLogin">Login</button>
       <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+      <div class="mt-3"><router-link class="--detail" to="/signup">Don't have an account? Register</router-link></div>
     </div>
   </div>
 </template>

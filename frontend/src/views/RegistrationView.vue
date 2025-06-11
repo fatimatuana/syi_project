@@ -8,6 +8,7 @@
       <input type="password" v-model="confirmPassword" placeholder="Confirm Password" />
       <button class="btn-secondary" @click="handleSignup">Sign Up</button>
       <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+      <div class="mt-3"><router-link class="--detail" to="/login">Already have an account? Login</router-link></div>
     </div>
   </div>
 </template>
