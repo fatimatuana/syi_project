@@ -1,32 +1,33 @@
 <!-- eslint-disable -->
 <template>
-    <v-container>
-      <Navbar />
-        <div class="history-container">
-        <table>
-        <tr>
-            <th class="text-left">Date</th>
-            <th class="text-left">Location</th>
-            <th class="text-left">Weather</th>
-            <th class="text-left">Temperature</th>
-            <th class="text-left">Mood</th>
-        </tr>
+  <v-container>
+    <Navbar />
+    <div class="history-container">
+      <h1 class="--medium">My Mood & Weather Journal</h1>
+      <table class="responsive-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Weather</th>
+            <th>Temperature</th>
+            <th>Mood</th>
+          </tr>
+        </thead>
         <tbody>
-        <tr v-for="item in entries" :key="item">
-            <td>{{ item.entry_date }}</td>
-            <td>{{ item.location_name }}</td>
-            <td>{{ item.weather_status }}</td>
-            <td>{{ item.temperature }}°C</td>
-            <td>
-            <span class="material-icons">
-                sentiment_{{ item.mood }}
-            </span>
+          <tr v-for="item in entries" :key="item.entry_date">
+            <td data-label="Date">{{ item.entry_date }}</td>
+            <td data-label="Location">{{ item.location_name }}</td>
+            <td data-label="Weather">{{ item.weather_status }}</td>
+            <td data-label="Temperature">{{ item.temperature }}°C</td>
+            <td data-label="Mood">
+              <span class="material-icons">sentiment_{{ item.mood }}</span>
             </td>
-        </tr>
+          </tr>
         </tbody>
-    </table>
+      </table>
     </div>
-    </v-container>
+  </v-container>
 </template>
 
 <script>
@@ -73,25 +74,64 @@ export default {
 .history-container {
   padding: 20px;
   height: 80vh;
-  max-height: 90vh;
-    overflow-y: auto;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-content: center;
-    justify-content: space-evenly;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-td{
-    padding: 10px 30px;
+
+.responsive-table {
+  width: 85vw;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
-.tr{
-    display: flex;
-    justify-content: space-around;
-    min-width: 80vw;
-    flex-direction: column;
+
+.responsive-table th,
+.responsive-table td {
+  padding: 12px;
+  border: 1px solid rgb(230 230 230 / 30%);
+  text-align: left;
 }
+
 .material-icons {
-    font-size: 24px;
-    vertical-align: middle;
+  font-size: 24px;
+}
+
+/* Responsive: collapse rows into stacked cards */
+@media (max-width: 768px) {
+  .responsive-table thead {
+    display: none;
+  }
+
+  .responsive-table,
+  .responsive-table tbody,
+  .responsive-table tr,
+  .responsive-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .responsive-table tr {
+    margin-bottom: 1rem;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .responsive-table td {
+    text-align: right;
+    position: relative;
+    padding-left: 50%;
+    box-sizing: border-box;
+  }
+
+  .responsive-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+  }
 }
 </style>
