@@ -3,7 +3,7 @@
    <div>
     <v-app-bar app color="primary" dark id="nav-bar">
       <div id="nav-bar-content">
-        <a><router-link to="/" tag="button">My Daily Companion</router-link></a>
+        <a><router-link to="/" tag="button" class="font--logo">My Daily Companion</router-link></a>
         <a><router-link to="/history" tag="button">My Entries</router-link></a>
         <a id="logout" tag="button" @click="logout">Logout</a>
       </div>
@@ -28,3 +28,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.font--logo{
+  font-size: 1.5rem;
+}
+</style>
