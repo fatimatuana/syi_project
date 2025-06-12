@@ -54,6 +54,7 @@ export default {
         // assuming the response contains a success field
         this.$router.push({ path: '/' });
         localStorage.setItem('loggedin', true); // hardcoded for now
+        localStorage.setItem('userEmail', this.email); // store email for future use
       } catch (error) {
         this.errorMessage = "An error occurred.";
         console.error(error);
