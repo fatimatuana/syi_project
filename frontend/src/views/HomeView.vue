@@ -57,7 +57,7 @@ export default {
     },
     async getWeather(latitude, longitude) {
       try {
-        let res = await axios.get("http://localhost:3000/weather/location", {
+        let res = await axios.get(`${process.env.BAPP_API_URL || 'http://localhost:3000'}/weather/location`, {
           params: {
             lat: latitude,
             lon: longitude
@@ -82,7 +82,7 @@ export default {
         return;
       }
       try {
-        let res = await axios.get("http://localhost:3000/weather/city", {
+        let res = await axios.get(`${process.env.BAPP_API_URL || 'http://localhost:3000'}/weather/city`, {
           params: {
             city: city
           }

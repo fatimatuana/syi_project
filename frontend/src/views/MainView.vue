@@ -40,13 +40,13 @@ export default {
   },
   methods: {
     async getUserId(){
-      let res = await axios.get(`http://localhost:3000/auth/user/${localStorage.getItem('userEmail')}`);
+      let res = await axios.get(`${process.env.BAPP_API_URL || 'http://localhost:3000'}/auth/user/${localStorage.getItem('userEmail')}`);
       let userData = res.data;
       return userData.id;
     },
     async handleMoodSelected(mood) {
       let userId = await this.getUserId();
-      await axios.post("http://localhost:3000/entries/add", {
+      await axios.post(`${process.env.BAPP_API_URL || 'http://localhost:3000'}/entries/add`, {
         userId: userId,
         weather_status: this.weatherData.main,
         temperature: this.weatherData.temperature,

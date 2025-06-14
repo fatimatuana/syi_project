@@ -41,7 +41,7 @@ export default {
       }
 
       try {
-        const response = await axios.post("http://localhost:3000/auth/signup", {
+        const response = await axios.post(`${process.env.BAPP_API_URL || 'http://localhost:3000'}/auth/signup`, {
           email: this.email,
           password: this.password,
           username: this.email.split('@')[0] // using email prefix as username
@@ -50,7 +50,6 @@ export default {
           this.errorMessage = "An error occurred. Please try again.";
           return null;
         });
-        console.log("Signup response:", response.data);
         // assuming the response contains a success field
         this.$router.push({ path: '/' });
         localStorage.setItem('loggedin', true); // hardcoded for now

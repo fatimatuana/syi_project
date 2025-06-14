@@ -51,18 +51,17 @@ export default {
   methods: {
     async getUserEntries(){
       let userId = await this.getUserId();
-      let res = await axios.get(`http://localhost:3000/entries/${userId}`);
+      let res = await axios.get(`${process.env.BAPP_API_URL || 'http://localhost:3000'}/entries/${userId}`);
       this.entries = res.data.map(entry => ({
-        entry_date: entry.entry_date.split('T')[0], //date as YYYY-MM-DD
+        entry_date: entry.entry_date.split('T')[0].split('-').reverse().join('-'),
         location_name: entry.location_name,
         temperature: entry.temperature,
         weather_status: entry.weather_status,
         mood: entry.mood,
       }));
-      console.log("User entries:", this.entries);
     },
     async getUserId(){
-        let res = await axios.get(`http://localhost:3000/auth/user/${localStorage.getItem('userEmail')}`);
+        let res = await axios.get(`${process.env.BAPP_API_URL || 'http://localhost:3000'}/auth/user/${localStorage.getItem('userEmail')}`);
         let userData = res.data;
         return userData.id;
     },
