@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const quotesRoute = require('./routes/quotes');
@@ -7,7 +8,7 @@ const entriesRoutes = require('./routes/entries');
 const suggestionsRoute = require('./routes/suggestions');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
